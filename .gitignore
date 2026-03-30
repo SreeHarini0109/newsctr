@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env/
+
+# Data (too large for GitHub)
+data/
+
+# Outputs - ignore caches and plots, keep model files
+outputs/*.npy
+outputs/*.png
+
+# Baseline model (not used by the UI)
+outputs/baseline_model.joblib
+
+# macOS
+.DS_Store

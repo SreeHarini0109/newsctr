@@ -1,0 +1,250 @@
+:root {
+    --bg-color: #050505;
+    --glass-bg: rgba(20, 20, 23, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #f0f0f5;
+    --text-muted: #8e8e99;
+    --accent-blue: #00f0ff;
+    --accent-glow: rgba(0, 240, 255, 0.4);
+    --ring-bg: #2a2a35;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Background Particles */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+}
+
+/* Glassmorphism Container */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 3rem;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+    z-index: 10;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-container:hover {
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+/* Header & Typography */
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+h1.glitch {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Inputs */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-family: 'Syncopate', sans-serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 1rem;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    resize: none;
+    height: 100px;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+textarea::placeholder {
+    color: #4a4a55;
+}
+
+/* Button */
+.cyber-button {
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    font-family: 'Syncopate', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cyber-button:hover {
+    background: var(--accent-blue);
+    color: #000;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.cyber-button:disabled {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Results Section */
+.results-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.results-section.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Score Ring */
+.score-ring-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+}
+
+.score-ring {
+    transform: rotate(-90deg);
+}
+
+.ring-bg {
+    fill: none;
+    stroke: var(--ring-bg);
+    stroke-width: 8;
+}
+
+.ring-fill {
+    fill: none;
+    stroke: var(--accent-blue);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 440; /* 2 * pi * r (r=70) ≈ 439.8 */
+    stroke-dashoffset: 440; /* Starts empty */
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.score-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#score-percentage {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* Analysis Panel */
+.analysis-panel {
+    flex: 1;
+}
+
+#engagement-label {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 1.1rem;
+    color: var(--accent-blue);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.tech-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 0.9rem;
+    color: #fff;
+}

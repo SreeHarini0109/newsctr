@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTR Predictor | News Analytics</title>
+
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Particle Background Container -->
+    <div id="particles-js"></div>
+
+    <main class="glass-container">
+        
+        <header>
+            <h1 class="glitch" data-text="PREDICT CTR">PREDICT CTR</h1>
+            <p class="subtitle">AI Headline Engagement Analysis</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="headline-input">HEADLINE TEXT</label>
+                <textarea id="headline-input" placeholder="Type a news headline here to analyze its click probability... e.g. 'Scientists discover shocking new exoplanet'"></textarea>
+            </div>
+            
+            <button id="predict-btn" class="cyber-button">
+                <span class="btn-text">INITIALIZE PREDICTION</span>
+                <span class="btn-glitch"></span>
+            </button>
+        </div>
+
+        <div class="results-section hidden" id="results-container">
+            <div class="score-ring-container">
+                <svg class="score-ring" width="160" height="160">
+                    <circle class="ring-bg" cx="80" cy="80" r="70"></circle>
+                    <circle class="ring-fill" id="score-circle" cx="80" cy="80" r="70"></circle>
+                </svg>
+                <div class="score-display">
+                    <span id="score-percentage">0%</span>
+                </div>
+            </div>
+            
+            <div class="analysis-panel">
+                <h3 id="engagement-label">AWAITING INPUT</h3>
+                <div class="tech-stats">
+                    <div class="stat-box">
+                        <span class="stat-label">TOKENS</span>
+                        <span class="stat-value" id="word-count">--</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">CHARS</span>
+                        <span class="stat-value" id="char-count">--</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">MODEL</span>
+                        <span class="stat-value" id="model-value">BERT + MLP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
